@@ -20,7 +20,7 @@ function binarySearch(arr,val){
     return -1 
 }
 
-binarySearch([2,5,6,9,13,16,28,30], 15)       
+binarySearch([2,5,6,9,13,16,28,30], 50)       
 
 // [2  ,5  ,6  ,9  ,13  ,15  ,28  ,30]
 // l            m                    r
