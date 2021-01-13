@@ -4,7 +4,7 @@ function binarySearch(arr,val){
   let middle = Math.floor((left + right) / 2);
 
   while(arr[middle] !== val && left <= right){
-    if(val < arr[middle]){
+    if(val < arr[middle]){ // if value is less than middle
       right = middle - 1
     }else {
       left = middle +1
