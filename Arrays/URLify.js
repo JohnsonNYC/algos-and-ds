@@ -17,7 +17,6 @@ function URLify(string){
   let stringArr = string.trim().split(" ");
   let result = ""
   let i = 0; 
-
   while(i < stringArr.length){
     if(i === stringArr.length - 1){
       result += stringArr[i]
