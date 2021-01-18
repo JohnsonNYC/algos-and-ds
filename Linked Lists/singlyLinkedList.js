@@ -75,41 +75,48 @@ class SLL {
     return currentHead
   }
 
+  _toArray(){
+    let arr = [];
+    let current = this.head;
+    while(current){
+      arr.push(current.val)
+      current = current.next;
+    }
+    return arr
+  }
+
   removeDups(){
-  // {1:true, 2:true, 3:true}
-  // 1 => 2 => 3 => 3
-  //           t           
-  //                c          
-  // Create Hashtable
-  // create two markers
-  // if current dne is hashtable, add to hashtable, and current moves up 
-    // if current !== temp; temp moves up 
-  // if current does exist in hashtable
-    // if current is tail
-      //
-    // if it is not tail
-  
-  let store = {};
-  let current = this.head;
-  let temp = current;
-  let j= 0 ;
-
-  while(j < this.length){
-    if(!store[current.val]){
-      store[current.val] = true;
-      current = current.next 
-    }else{
-
+    let current = this.head;
+    let temp = null;
+    let set = new Set();
+    while(current){
+      if(set.has(current.val)){
+        let deletedNode = current;
+        temp.next = current.next;
+        current = current.next;
+        deletedNode.next = null;
+      }else{
+        set.add(current.val);
+        temp = current;
+        current = current.next;
+      }
     }
-    console.log(j)
-    }
+    return this
   }
 }
 
 var list = new SLL()
-list.push('One')
-list.push('Two') 
-list.push('Two') 
-list.push('Four')
-list.push('Five')
+list.push(1)
+list.push(5) 
+list.push(1) 
+list.push(6) 
+list.push(8) 
+list.push(6) 
+list.push(8) 
+list.push(8) 
+list.push(8) 
+list.push(8)
+console.log(list._toArray())
+
 list.removeDups()
+console.log(list._toArray())
