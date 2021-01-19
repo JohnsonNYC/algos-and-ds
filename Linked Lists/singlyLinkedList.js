@@ -87,36 +87,48 @@ class SLL {
 
   removeDups(){
     let current = this.head;
-    let temp = null;
-    let set = new Set();
+    let temp = current; 
+    let stack = new Set()
+
     while(current){
-      if(set.has(current.val)){
+      if(!stack.has(current.val)){
+        stack.add(current.val)
+        temp = current;
+        current = current.next; 
+      }else{
         let deletedNode = current;
         temp.next = current.next;
-        current = current.next;
-        deletedNode.next = null;
-      }else{
-        set.add(current.val);
-        temp = current;
-        current = current.next;
+        current = temp.next;
+        deletedNode.next = null
+        this.length--
       }
     }
-    return this
+    return this.length
+  }
+
+  kthElement(value){
+    if(this.length === 0 || value > this.length) return undefined;
+    if(value === 1) return this.tail.val;
+    if(value === this.length) return this.head.val
+
+    let counter = 1; 
+    let numberOfIterations = this.length - (value - 1); //7
+    let current = this.head
+
+    while(counter < numberOfIterations){
+      current = current.next; 
+      counter++
+    } 
+    return current.val
   }
 }
 
 var list = new SLL()
 list.push(1)
+list.push(2) 
+list.push(3) 
+list.push(4) 
 list.push(5) 
-list.push(1) 
 list.push(6) 
-list.push(8) 
-list.push(6) 
-list.push(8) 
-list.push(8) 
-list.push(8) 
-list.push(8)
-console.log(list._toArray())
-
-list.removeDups()
-console.log(list._toArray())
+list.push(7) 
+console.log(list.kthElement(3))
