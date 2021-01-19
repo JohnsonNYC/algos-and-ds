@@ -121,14 +121,29 @@ class SLL {
     } 
     return current.val
   }
+
+  deleteMiddleNode(){
+    if(this.length === 0) return undefined
+    let counter = 0; 
+    let middleIndex = this.length % 2 === 0? Math.floor(this.length/2) - 1 : Math.ceil(this.length/2) - 1;
+    let current = this.head;
+    let temp = current
+    while( counter < middleIndex && current.next){
+      temp = current
+      current = current.next
+      counter++
+    }
+    temp.next = current.next
+    current = temp.next
+    this.length--
+
+    return this
+  }
 }
 
 var list = new SLL()
 list.push(1)
-list.push(2) 
-list.push(3) 
-list.push(4) 
-list.push(5) 
-list.push(6) 
-list.push(7) 
-console.log(list.kthElement(3))
+list.push(2)
+list.push(3)
+
+console.log(list.deleteMiddleNode())
