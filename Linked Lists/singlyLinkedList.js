@@ -30,6 +30,26 @@ class SLL {
     this.length++
     return this
   }
+  // U N S H I F T
+  // Create a newNode 
+  // If there is no head, set head and tail to newNode
+  // temporary = head
+  // this.head is not the node
+  // newNode.next = temp
+  // length++
+  unshift(val){
+    var newNode = new Node(val);
+    if(!this.head){
+      this.head = newNode;
+      this.tail = this.head
+    }else{
+      var temp = this.head
+      this.head = newNode;
+      newNode.next = temp;
+    }
+    this.length++
+    return this
+  }
 
   //POP: REMOVING FROM THE END OF THE LIST
   // If there are no nodes in the list, return undefined 
@@ -139,11 +159,59 @@ class SLL {
 
     return this
   }
+
+  palindrome(){
+    let str = "";
+    let revStr = "";
+    let current = this.head;
+    while(current){
+      str += `${current.val}`;
+      revStr = `${current.val}` + revStr;
+      current = current.next 
+    }
+    console.log(str,revStr)
+    if(str === revStr)return true
+    return false
+  }
+
 }
 
-var list = new SLL()
-list.push(1)
-list.push(2)
-list.push(3)
+function sumLists(list1, list2){
+  let num1 =""
+  let num2 =""
+  let numAns=""
+  let newList = new SLL();
+  let current1 = list1.head
+  let current2 = list2.head
 
-console.log(list.deleteMiddleNode())
+  while(current1){
+    num1 = current1.val + num1;
+    current1 = current1.next
+    
+  }
+  while(current2){
+    num2 = current2.val + num2;
+    current2 = current2.next
+  }
+
+  numAns += parseInt(num1)+ parseInt(num2)
+  for(let num of numAns){
+    newList.unshift(num)
+  }
+
+  return newList;
+}
+
+var list1 = new SLL()
+
+list1.push(0)
+
+
+console.log(list1.palindrome())
+
+// var list2 = new SLL()
+// list2.push(10)
+
+
+
+// console.log(sumLists(list1,list2))
