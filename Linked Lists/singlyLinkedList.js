@@ -202,16 +202,55 @@ function sumLists(list1, list2){
   return newList;
 }
 
-var list1 = new SLL()
 
-list1.push(0)
+function intersection (l1,l2){
+  let longList = l1.length > l2.length? l1 : l2;
+  let shortList = l1.length > l2.length? l2: l1; 
 
+  let longCurrent = longList.head;
+  let shortCurrent = shortList.head;
 
-console.log(list1.palindrome())
+  
+  let i = 0;
+  let j = 0;
+  let listDiff = longList.length - shortList.length;
+  let foundNode;
+  
+  while( i < listDiff && listDiff !== 0){
+    longCurrent = longCurrent.next
+    i++
+  }
 
-// var list2 = new SLL()
-// list2.push(10)
+  while(j < shortList.length){
+    if(shortCurrent.val === longCurrent.val && foundNode === undefined){
+      foundNode = shortCurrent
+    }else if(foundNode !== undefined){
+      if(shortCurrent.val !== longCurrent.val){
+        return false
+      }
+    }
+    shortCurrent = shortCurrent.next
+    longCurrent = longCurrent.next
+    j++
+    i++
+  }
+  return foundNode
+}
 
+var list1 = new SLL();
+list1.push(3);
+list1.push(1);
+list1.push(5);
+list1.push(9);
+list1.push(7);
+list1.push(2);
+list1.push(1);
 
+var list2 = new SLL();
+list2.push(4);
+list2.push(6);
+list2.push(7);
+list2.push(2);
+list2.push(1);
 
-// console.log(sumLists(list1,list2))
+console.log(intersection(list1,list2))
