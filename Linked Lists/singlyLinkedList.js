@@ -253,4 +253,4 @@ list2.push(7);
 list2.push(2);
 list2.push(1);
 
-console.log(intersection(list1,list2))
+console.log(list1)
