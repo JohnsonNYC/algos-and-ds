@@ -99,19 +99,39 @@ class DLL{
     }
     return current
   }
+
+  removeDups(){
+    let current = this.head;
+    let temp = current; 
+    let stack = new Set()
+    while(current){
+      if(!stack.has(current.val)){
+        stack.add(current.val)
+        temp = current;
+        current = current.next; 
+      }else{
+        let deletedNode = current;
+        if(deletedNode === this.tail){
+          this.tail = deletedNode.prev
+        }
+        temp.next = current.next;
+        current = temp.next;
+        deletedNode.next = null;
+        deletedNode.prev = null;
+        this.length--
+      }
+    }
+    return this.length
+  }
 }
 
-var list = new DLL(); // 1 <==> 2
+var list = new DLL();
 list.push(1) 
+list.push(2) 
+list.push(3) 
 list.push(2)
-list.push(3)
 list.push(4)
-list.push(5)
-list.push(6)
-list.push(7)
-list.push(8)
-list.push(9)
-list.push(10)
-
-
-console.log(list.get(10))
+list.push(3)
+list.push(3)
+list.push(3)
+console.log(list.removeDups())
