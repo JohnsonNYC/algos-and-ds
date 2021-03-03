@@ -1,8 +1,6 @@
-// Binary Trees: Each parent node has a 0,1,or 2 child nodes
-// Binary Search Trees: 
-    // Every parent node has at most two children
-    // Every node to the left of a parent node is always smaller than parent
-    // Every node to the right of a parent node is always larger than parent
+// Binary Trees: Can have values of any type but at most two children for each parent
+// Binary Search Trees: A specific version of binary trees where every node to the left of the parent is
+//                      less than it's value and every node to the right is greater 
 
     // When to use Breadth First Search V Depth First Search
     // Deponds on the true.
